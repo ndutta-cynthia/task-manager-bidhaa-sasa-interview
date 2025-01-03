@@ -1,0 +1,36 @@
+<template>
+    <lightning-card title="Tasks" icon-name="standard:task">
+        <div class="slds-p-around_medium">
+            <template if:false={showForm}>
+                <div class="slds-m-bottom_small">
+                    <lightning-button 
+                        label="New Task" 
+                        onclick={handleNewTask} 
+                        variant="brand">
+                    </lightning-button>
+                </div>
+                
+                <template if:true={tasks}>
+                    <lightning-datatable
+                        key-field="Id"
+                        data={tasks}
+                        columns={columns}
+                        hide-checkbox-column
+                        onrowaction={handleRowAction}>
+                    </lightning-datatable>
+                </template>
+                <template if:false={tasks}>
+                    <div class="slds-text-align_center">Loading tasks...</div>
+                </template>
+            </template>
+
+            <template if:true={showForm}>
+                <c-task-form
+                    record-id={selectedTaskId}
+                    ontaskupdated={handleTaskUpdated}
+                    oncancel={handleCancel}>
+                </c-task-form>
+            </template>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,55 @@
+<template>
+    <lightning-card title={cardTitle} icon-name="standard:task">
+        <div class="slds-p-around_medium">
+            <lightning-record-edit-form
+                object-api-name="Task__c"
+                record-id={recordId}
+                onsubmit={handleSubmit}
+                onsuccess={handleSuccess}
+                onerror={handleError}>
+
+                <lightning-messages></lightning-messages>
+                
+                <div class="slds-grid slds-gutters slds-grid_vertical">
+                    <div class="slds-col">
+                        <lightning-input-field
+                            field-name="Name"
+                            required>
+                        </lightning-input-field>
+                    </div>
+
+                    <div class="slds-col">
+                        <lightning-input-field
+                            field-name="Due_Date__c"
+                            required>
+                        </lightning-input-field>
+                        <template if:true={dueDateError}>
+                            <div class="slds-form-element__help slds-text-color_error">
+                                {dueDateError}
+                            </div>
+                        </template>
+                    </div>
+
+                    <div class="slds-col">
+                        <lightning-input-field
+                            field-name="Completed__c">
+                        </lightning-input-field>
+                    </div>
+                </div>
+
+                <div class="slds-m-top_medium">
+                    <lightning-button
+                        class="slds-m-right_x-small"
+                        label="Cancel"
+                        onclick={handleCancel}>
+                    </lightning-button>
+                    <lightning-button
+                        label="Save"
+                        variant="brand"
+                        type="submit">
+                    </lightning-button>
+                </div>
+            </lightning-record-edit-form>
+        </div>
+    </lightning-card>
+</template> 

@@ -1,0 +1,10 @@
+.slds-card {
+    background: #ffffff;
+    border-radius: 0.25rem;
+    border: 1px solid #d8dde6;
+}
+
+.slds-illustration_small {
+    text-align: center;
+    padding: 2rem;
+}
